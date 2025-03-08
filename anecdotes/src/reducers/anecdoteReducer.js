@@ -17,6 +17,19 @@ const asObject = (anecdote) => {
   }
 }
 
+export const addAnecdoteAction = (content) => {
+  return {
+    type: 'NEW_ANECDOTE',
+    payload: content
+  }
+}
+
+export const addVote = (id) => {
+  return {
+    type: 'ADD_VOTE',
+    payload: { id }
+  }
+}
 
 const initialState = anecdotesAtStart.map(asObject)
 
