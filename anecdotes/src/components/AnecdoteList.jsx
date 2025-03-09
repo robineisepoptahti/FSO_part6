@@ -15,7 +15,7 @@ const filter = useSelector(state => state.filter)
           </div>
           <div>
             has {anecdote.votes}
-            <Vote id={anecdote.id} />
+            <Vote id={anecdote.id} name={anecdote.content}/>
           </div>
           </div>
     : null 
