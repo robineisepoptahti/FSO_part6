@@ -5,6 +5,7 @@ const AnecdoteList = () => {
 const anecdotes = useSelector(state => state.anecdotes)
 const filter = useSelector(state => state.filter)
 
+
     return (
     <div>      
     {anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote => anecdote.content.toLowerCase().startsWith(filter.toLowerCase()) ?
