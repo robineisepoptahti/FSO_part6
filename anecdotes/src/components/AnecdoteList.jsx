@@ -8,7 +8,7 @@ const filter = useSelector(state => state.filter)
 
     return (
     <div>      
-    {anecdotes.sort((a, b) => b.votes - a.votes).map(anecdote => anecdote.content.toLowerCase().startsWith(filter.toLowerCase()) ?
+    {anecdotes.map(anecdote => anecdote.content.toLowerCase().startsWith(filter.toLowerCase()) ?
         <div key={anecdote.id}>
           <div>
             {anecdote.content}
