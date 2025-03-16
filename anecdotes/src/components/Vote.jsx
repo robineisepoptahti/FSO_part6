@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
-import {addVote} from '../reducers/anecdoteReducer'
-import {notificationReducer} from '../reducers/notificationReducer'
+import {newVote} from '../reducers/anecdoteReducer'
+import {setNotifications} from '../reducers/notificationReducer'
 import PropTypes from 'prop-types'
 
 
@@ -9,11 +9,8 @@ const Vote = ( {id, name} ) => {
   const dispatch = useDispatch()
     const handleVote = () => {
       console.log('vote', id)
-      dispatch(addVote(id))
-      dispatch(notificationReducer(`You voted '${name}'`))
-      setTimeout(() => {
-      dispatch(notificationReducer(''))
-          }, 5000)
+      dispatch(newVote(id))
+      dispatch(setNotifications(`you voted '${name}'`, 10))
     }
     return (
       <button onClick={handleVote}>vote</button>

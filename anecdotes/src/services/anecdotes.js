@@ -1,6 +1,9 @@
 import axios from 'axios'
 
+
+
 const baseUrl = 'http://localhost:3001/anecdotes'
+
 
 const getAll = async () => {
 const response = await axios.get(baseUrl)
@@ -18,4 +21,13 @@ const saveAnecdote = async (content) => {
      return response.data
 }
 
-export default {getAll, saveAnecdote}
+const updateLikes = async (id) => {
+const response = await axios.get(baseUrl)
+const entries = response.data
+const entry = entries.find(anecdote => anecdote.id === id)
+const url = `${baseUrl}/${id}`
+const res = await axios.put(url, {...entry, votes: entry.votes + 1})
+return res
+}
+
+export default {getAll, saveAnecdote, updateLikes}
