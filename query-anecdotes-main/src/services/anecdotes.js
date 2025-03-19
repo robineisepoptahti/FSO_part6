@@ -10,10 +10,10 @@ const response = await axios.get(baseUrl)
 return response.data
 }
 
-const saveAnecdote = async (content) => {
+export const saveAnecdote = async (content) => {
      const getId = () => (100000 * Math.random()).toFixed(0)
      const anecdote = {
-          content: content,
+          content: content.content,
           id: getId(),
           votes: 0
         }
