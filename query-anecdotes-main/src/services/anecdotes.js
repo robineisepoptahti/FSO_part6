@@ -21,7 +21,7 @@ export const saveAnecdote = async (content) => {
      return response.data
 }
 
-const updateLikes = async (id) => {
+export const updateLikes = async (id) => {
 const response = await axios.get(baseUrl)
 const entries = response.data
 const entry = entries.find(anecdote => anecdote.id === id)
