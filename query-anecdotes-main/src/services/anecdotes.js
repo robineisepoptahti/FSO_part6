@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 
-
 const baseUrl = 'http://localhost:3001/anecdotes'
 
 
@@ -9,6 +8,7 @@ export const getAll = async () => {
 const response = await axios.get(baseUrl)
 return response.data
 }
+
 
 export const saveAnecdote = async (content) => {
      const getId = () => (100000 * Math.random()).toFixed(0)
@@ -27,6 +27,6 @@ const entries = response.data
 const entry = entries.find(anecdote => anecdote.id === id)
 const url = `${baseUrl}/${id}`
 const res = await axios.put(url, {...entry, votes: entry.votes + 1})
-return res
+return res.data
 }
 
