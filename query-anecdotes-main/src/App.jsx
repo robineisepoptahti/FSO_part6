@@ -22,11 +22,13 @@ const App = () => {
   
   const queryClient = useQueryClient()
   const [msg, dispatch] = useReducer(msgReducer, '')
-  //const [msg, dispatch] = useContext(msgContext)
 
   const newNoteMutation = useMutation({ mutationFn: updateLikes, onSuccess: (data) => {
     queryClient.invalidateQueries({queryKey: ['anecdotes']})
     dispatch({ type: "SET", payload: `Voted '${data.content}'` })
+    setTimeout(() => {
+      dispatch({type: "CLEAR"})
+      }, 5000)
   },
  })
 

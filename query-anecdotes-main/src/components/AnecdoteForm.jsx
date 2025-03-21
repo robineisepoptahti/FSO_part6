@@ -10,7 +10,13 @@ const [msg, dispatch] = useContext(MsgContext)
   const newNoteMutation = useMutation({ mutationFn: saveAnecdote, onSuccess: (data) => {
     queryClient.invalidateQueries({queryKey: ['anecdotes']})
     dispatch({ type: "SET", payload: `Created anecdote '${data.content}'` })
-  },
+    setTimeout(() => {
+      dispatch({type: "CLEAR"})
+      }, 5000)
+  }, onError: () => {dispatch({ type: "SET", payload: `Anecdote too short, must have length of 5 or more.` })
+    setTimeout(() => {
+    dispatch({type: "CLEAR"})
+    }, 5000)}
  })
 
   const onCreate = (event) => {
